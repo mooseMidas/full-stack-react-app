@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search renders correctly 1`] = `
+<div>
+  <h1>
+    iTunes API
+  </h1>
+  <p>
+    <a
+      href="/favourites"
+      onClick={[Function]}
+      style={
+        Object {
+          "color": "black",
+        }
+      }
+    >
+      Favourites List
+    </a>
+  </p>
+  <div
+    className="form-container"
+  >
+    <div
+      className="form-row"
+    >
+      <label>
+        SearchForm Term:
+      </label>
+      <input
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="form-row"
+    >
+      <label>
+        Number of Items:
+      </label>
+      <input
+        onChange={[Function]}
+        type="number"
+        value={10}
+      />
+    </div>
+    <div
+      className="form-row"
+    >
+      <label>
+        Media Type:
+      </label>
+      <select
+        onChange={[Function]}
+        value="all"
+      >
+        <option
+          value="all"
+        >
+          All
+        </option>
+        <option
+          value="movie"
+        >
+          Movie
+        </option>
+        <option
+          value="podcast"
+        >
+          Podcast
+        </option>
+        <option
+          value="song"
+        >
+          Song
+        </option>
+        <option
+          value="audiobook"
+        >
+          Audiobook
+        </option>
+        <option
+          value="shortFilm"
+        >
+          Short Film
+        </option>
+        <option
+          value="tvShow"
+        >
+          tvShow
+        </option>
+        <option
+          value="software"
+        >
+          Software
+        </option>
+        <option
+          value="ebook"
+        >
+          Ebook
+        </option>
+      </select>
+    </div>
+    <div
+      className="form-row"
+    >
+      <button
+        className="buttonSearch"
+        onClick={[Function]}
+      >
+        SearchForm
+      </button>
+    </div>
+  </div>
+</div>
+`;
