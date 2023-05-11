@@ -1,59 +1,34 @@
-import React from "react";
-import { act } from "react-dom/test-utils";
+/* Jest test to check the behaviour of the SearchResults component when the "Add to Favourites" button is clicked */
+
+import { render, fireEvent } from "@testing-library/react";
 import SearchResults from "../components/SearchResults";
 
-let targetContainerEl = null;
+describe("SearchResults", () => {
+  it("should add item to favourites when 'Add to Favourites' button is clicked", () => {
+    const mockResult = {
+      trackId: 123,
+      artistName: "Test Artist",
+      trackName: "Test Track",
+      primaryGenreName: "Test Genre",
+    };
+    // empty favourites array
+    const mockFavourites = [];
+    // mock function as a prop
+    const mockSetFavourites = jest.fn();
 
-const mockData = {
-  wrapperType: "track",
-  kind: "song",
-  artistId: 909253,
-  collectionId: 120954021,
-  trackId: 120954025,
-  artistName: "Jack Johnson",
-  collectionName: "Sing-a-Longs and Lullabies for the Film Curious George",
-  trackName: "Upside Down",
-  collectionCensoredName:
-    "Sing-a-Longs and Lullabies for the Film Curious George",
-  trackCensoredName: "Upside Down",
-  artistViewUrl:
-    "https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewArtist?id=909253",
-  collectionViewUrl:
-    "https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewAlbum?i=120954025&id=120954021&s=143441",
-  trackViewUrl:
-    "https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewAlbum?i=120954025&id=120954021&s=143441",
-  previewUrl:
-    "http://a1099.itunes.apple.com/r10/Music/f9/54/43/mzi.gqvqlvcq.aac.p.m4p",
-  artworkUrl60:
-    "http://a1.itunes.apple.com/r10/Music/3b/6a/33/mzi.qzdqwsel.60x60-50.jpg",
-  artworkUrl100:
-    "http://a1.itunes.apple.com/r10/Music/3b/6a/33/mzi.qzdqwsel.100x100-75.jpg",
-  collectionPrice: 10.99,
-  trackPrice: 0.99,
-  collectionExplicitness: "notExplicit",
-  trackExplicitness: "notExplicit",
-  discCount: 1,
-  discNumber: 1,
-  trackCount: 14,
-  trackNumber: 1,
-  trackTimeMillis: 210743,
-  country: "USA",
-  currency: "USD",
-  primaryGenreName: "Rock",
-};
-
-test("value changes when addToFavourites click event is fired", () => {
-  //  Mock the handleAddToFavourites event handler function using jest
-  const handleAddToFavouriteItunes = jest.fn();
-  //   Action of rendering the component on the jestdom
-  act(() => {
-    (
+    const { getByText } = render(
       <SearchResults
-        musicItem={mockData}
-        isFromStore={true}
-        handleAddToFavouriteItunes={handleAddToFavouriteItunes}
+        searchResults={[mockResult]}
+        favourites={mockFavourites}
+        setFavourites={mockSetFavourites}
       />
-    ),
-      targetContainerEl;
+    );
+
+    // finds the button and simulates a click using fireEvent
+    const addToFavouritesButton = getByText("Add to Favourites");
+    fireEvent.click(addToFavouritesButton);
+
+    // asserts that the dunction was called with the expected array
+    expect(mockSetFavourites).toHaveBeenCalledWith([mockResult]);
   });
 });

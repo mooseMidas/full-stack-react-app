@@ -41,7 +41,7 @@ function SearchForm({ setSearchResults }) {
       </p>
       <div className="form-container">
         <div className="form-row">
-          <label>SearchForm Term:</label>
+          <label>Search Term:</label>
           <input
             type="text"
             value={searchTerm}

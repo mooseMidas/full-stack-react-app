@@ -1,3 +1,5 @@
+// server.js -> responsible for creating and strating the server
+
 const app = require("./app");
 const port = process.env.PORT || 8080;
 

@@ -16,6 +16,7 @@ function SearchResults({ searchResults, favourites, setFavourites }) {
     } else {
       // if not the item is added to the favourites array using setFavourites prop
       setFavourites([...favourites, result]);
+      alert("This track has been added to your favourites!");
     }
   };
 

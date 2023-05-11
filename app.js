@@ -1,9 +1,29 @@
+// app.js -> contains configurations and middleware setup
+
 const express = require("express");
 const helmet = require("helmet");
 const app = express();
 
-// Helemt middleware added for security
-app.use(helmet());
+// Helmet middleware added for security
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        styleSrc: ["'self'", "'unsafe-inline'"],
+        scriptSrc: ["'self'", "'unsafe-inline'", "example.com"],
+      },
+    },
+    xssFilter: true,
+    noSniff: true,
+    referrerPolicy: true,
+    hsts: true,
+    hidePoweredBy: true,
+    noCache: true,
+    contentSecurityPolicy: false,
+    XContentOptions: "nosniff",
+  })
+);
 
 // GET request sends query to API with the specified search term, limit and media type
 app.get("/search", async (req, res) => {
