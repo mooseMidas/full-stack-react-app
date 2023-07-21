@@ -1,4 +1,4 @@
-// app.js -> contains configurations and middleware setup
+// app.js contains configurations and middleware setup
 
 const express = require("express");
 const helmet = require("helmet");
