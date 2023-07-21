@@ -1,0 +1,128 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchResults component renders correctly 1`] = `
+<div
+  className="container-md"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="card-col col-md"
+    >
+      <div
+        className="card-item"
+      >
+        <div
+          className="card--image-container"
+        >
+          <img
+            alt="Album 1"
+            className="card--image"
+          />
+          <div
+            className="card--button-container"
+          >
+            <svg
+              className="card--button"
+              data-testid="add-to-favourites-button"
+              fill="currentColor"
+              height="1em"
+              onClick={[Function]}
+              viewBox="0 0 16 16"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"
+                fillRule="evenodd"
+              />
+            </svg>
+          </div>
+        </div>
+        <h3
+          className="card--title"
+        >
+          Album 1
+        </h3>
+        <div
+          className="card-description-container"
+        >
+          <span
+            className="card--description"
+          >
+            Short description 1
+          </span>
+        </div>
+        <h3
+          className="card--title"
+        />
+        <button
+          className="card--preview-btn"
+          onClick={[Function]}
+        >
+          Preview
+        </button>
+      </div>
+    </div>
+    <div
+      className="card-col col-md"
+    >
+      <div
+        className="card-item"
+      >
+        <div
+          className="card--image-container"
+        >
+          <img
+            alt="Album 2"
+            className="card--image"
+          />
+          <div
+            className="card--button-container"
+          >
+            <svg
+              className="card--button"
+              data-testid="add-to-favourites-button"
+              fill="currentColor"
+              height="1em"
+              onClick={[Function]}
+              viewBox="0 0 16 16"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"
+                fillRule="evenodd"
+              />
+            </svg>
+          </div>
+        </div>
+        <h3
+          className="card--title"
+        >
+          Album 2
+        </h3>
+        <div
+          className="card-description-container"
+        >
+          <span
+            className="card--description"
+          >
+            Short description 2
+          </span>
+        </div>
+        <h3
+          className="card--title"
+        />
+        <button
+          className="card--preview-btn"
+          onClick={[Function]}
+        >
+          Preview
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

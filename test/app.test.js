@@ -1,19 +1,23 @@
-/* Test to check if API response of the endpoint /search is correct */
+// Test to check if API response
 
-// supertest library
+// supertest library installed
 const request = require("supertest");
 const app = require("../app");
 
-describe("API response", () => {
+describe("GET /search", () => {
+  //api restricted to one request every 5 sec
+  jest.setTimeout(10000);
   // to check if the endpoint returns results when given query parameters
-  it("should return search results", async () => {
+  it("returns data from the iTunes API", async () => {
     const response = await request(app).get(
-      "/search?term=Batman&limit=10&entity=all"
+      "/search?term=apple&limit=10&entity=musicTrack"
     );
-    // response 200 indicates that the request was successful
+
     expect(response.status).toBe(200);
-    console.log(response.body);
-    // checks if the body contains an array of search reuslts
-    expect(Array.isArray(response.body.results)).toBe(true);
+    expect(response.body).toMatchSnapshot();
   });
 });
+
+/*
+API Testing using Jest and SuperTest, Testing with Marie, Retrieved on 18 July 2023 from https://www.testingwithmarie.com/post/api-testing-using-jest-and-supertest
+ */

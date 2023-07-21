@@ -1,7 +1,11 @@
 /* Jest test to check the behaviour of the SearchResults component when the "Add to Favourites" button is clicked */
-
-import { render, fireEvent } from "@testing-library/react";
+import React from "react";
+import { fireEvent, render } from "@testing-library/react";
 import SearchResults from "../components/SearchResults";
+
+// had to mock alert function as it is not supported by Node
+window.alert = jest.fn();
+
 
 describe("SearchResults", () => {
   it("should add item to favourites when 'Add to Favourites' button is clicked", () => {
@@ -16,7 +20,7 @@ describe("SearchResults", () => {
     // mock function as a prop
     const mockSetFavourites = jest.fn();
 
-    const { getByText } = render(
+    const { getByTestId  } = render(
       <SearchResults
         searchResults={[mockResult]}
         favourites={mockFavourites}
@@ -25,10 +29,15 @@ describe("SearchResults", () => {
     );
 
     // finds the button and simulates a click using fireEvent
-    const addToFavouritesButton = getByText("Add to Favourites");
+    const addToFavouritesButton = getByTestId("add-to-favourites-button");
     fireEvent.click(addToFavouritesButton);
 
     // asserts that the dunction was called with the expected array
     expect(mockSetFavourites).toHaveBeenCalledWith([mockResult]);
+    expect(window.alert).toHaveBeenCalledWith("This item has been added to your favourites!");
+
   });
 });
+
+
+

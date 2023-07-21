@@ -13,33 +13,38 @@ function App() {
   const [favourites, setFavourites] = useState([]);
 
   return (
-    <div>
-      {/* used React Router to define two diffrent routes for an attractive display*/}
-      <Routes>
-        <Route
-          exact
-          path="/"
-          element={
-            <>
-              {/* passed props to child components */}
-              <SearchForm setSearchResults={setSearchResults} />
-              <SearchResults
-                searchResults={searchResults}
+    <>
+      <div className="app">
+        {/* used React Router to define two diffrent routes for an attractive display*/}
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={
+              <>
+                {/* passed props to child components */}
+                <SearchForm setSearchResults={setSearchResults} />
+                <SearchResults
+                  searchResults={searchResults}
+                  favourites={favourites}
+                  setFavourites={setFavourites}
+                />
+              </>
+            }
+          />
+          <Route
+            exact
+            path="favourites"
+            element={
+              <Favourites
                 favourites={favourites}
                 setFavourites={setFavourites}
               />
-            </>
-          }
-        />
-        <Route
-          exact
-          path="favourites"
-          element={
-            <Favourites favourites={favourites} setFavourites={setFavourites} />
-          }
-        />
-      </Routes>
-    </div>
+            }
+          />
+        </Routes>
+      </div>
+    </>
   );
 }
 

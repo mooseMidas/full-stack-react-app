@@ -1,79 +1,101 @@
 /*
-This SearchResults component will display the results, it will also add a specified item to the Favourites component on a button click.
+SearchResults component will render results list,
+"ArrowDown" button to add item to Favourites component, 
+"Preview" button to autostart previews of item result
 */
 
-import React from "react";
-import { Card, Button } from "react-bootstrap";
+import React, { useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import { ArrowDown, XCircle } from "react-bootstrap-icons";
 
 // receives three props from App.js -> to display and update the list and to set the favourites list
 function SearchResults({ searchResults, favourites, setFavourites }) {
-  //
+  const [previewUrl, setPreviewUrl] = useState("");
+
+  // checks if the item has been added already using some(). If isDuplicate value is false, item is added to favourites
   const handleAddToFavourites = (result) => {
-    // checks if the item has been added already using find() and the favourite prop array
-    if (favourites.find((favourite) => favourite.trackId === result.trackId)) {
-      // Alert the user that the track is already in favourites
-      alert("This track is already in your favourites!");
+    const isDuplicate = favourites.some((favourite) => {
+      const uniqueKey = result.trackId || result.collectionId;
+      return (
+        uniqueKey && uniqueKey === (favourite.trackId || favourite.collectionId)
+      );
+    });
+
+    if (isDuplicate) {
+      window.alert("This item is already in your favourites!");
     } else {
-      // if not the item is added to the favourites array using setFavourites prop
       setFavourites([...favourites, result]);
-      alert("This track has been added to your favourites!");
+      window.alert("This item has been added to your favourites!");
     }
   };
 
+  const handlePreview = (url) => {
+    setPreviewUrl(url);
+  };
+
+  const handleClosePreview = () => {
+    setPreviewUrl("");
+  };
+
   return (
-    <div className="result-display">
-      {/* rendered using map() and the passed prop "searchResults" array */}
-      {searchResults.map((result) => (
-        <Card
-          // inline styling as * in App.css would change only part of the card color
-          className="display-card"
-          style={{
-            width: "25rem",
-            height: "15rem",
-            backgroundColor: "#a1c4fd",
-          }}
-          key={result.trackId}
-        >
-          <Card.Body
-            style={{
-              backgroundColor: "#a1c4fd",
-            }}
+    <Container fluid="md">
+      <Row>
+        {searchResults.map((result) => (
+          <Col
+            md
+            className="card-col"
+            key={result.trackId || result.collectionId}
           >
-            <Card.Title
-              style={{
-                backgroundColor: "#a1c4fd",
-              }}
-            >
-              {result.artistName}
-            </Card.Title>
-            <Card.Text
-              style={{
-                backgroundColor: "#a1c4fd",
-              }}
-            >
-              {result.trackName}
-            </Card.Text>
-            <Card.Text
-              style={{
-                backgroundColor: "#a1c4fd",
-              }}
-            >
-              {result.primaryGenreName}
-            </Card.Text>
-            <Button
-              style={{
-                backgroundColor: "#feada6",
-                borderColor: "black",
-                color: "black",
-              }}
-              onClick={() => handleAddToFavourites(result)}
-            >
-              Add to Favourites
-            </Button>
-          </Card.Body>
-        </Card>
-      ))}
-    </div>
+            <div className="card-item">
+              <div className="card--image-container">
+                <img
+                  src={result.artworkUrl100}
+                  className="card--image"
+                  alt={result.collectionName || result.trackName}
+                ></img>
+                <div className="card--button-container">
+                  <ArrowDown
+                    className="card--button"
+                    onClick={() => handleAddToFavourites(result)}
+                    data-testid="add-to-favourites-button"
+                  />
+                </div>
+              </div>
+              <h3 className="card--title">
+                {result.collectionName || result.trackName}
+              </h3>
+              <div className="card-description-container">
+                <span className="card--description">
+                  {result.shortDescription ||
+                    result.description ||
+                    result.longDescription}
+                </span>
+              </div>
+              <h3 className="card--title">
+                {result.kind || result.wrapperType}
+              </h3>
+              {/* Preview btn will only be displayed if result has previewUrl key */}
+              {result.previewUrl && (
+                <button
+                  className="card--preview-btn"
+                  onClick={() => handlePreview(result.previewUrl)}
+                >
+                  Preview
+                </button>
+              )}
+            </div>
+          </Col>
+        ))}
+        {previewUrl && (
+          <div className="preview-content">
+            <video controls autoPlay className="preview">
+              <source src={previewUrl} type="video/mp4" />
+            </video>
+            <XCircle className="close-preview-btn" onClick={handleClosePreview}/>
+          </div>
+        )}
+      </Row>
+    </Container>
   );
 }
 

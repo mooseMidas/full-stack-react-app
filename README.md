@@ -1,28 +1,56 @@
-# Web Projects API
+# Fullstack React App
 
-This backend allows you to add, retrieve, update, and delete web projects.
+This application is created using React and Express.
 
-# Setup
+The application interfaces with the iTunes Search API, allowing users to enter a search criteria.
 
-1. Clone the repository to your local machine.
-2. Open the terminal and navigate to the project directory (backend).
-3. Run npm install to install the dependencies.
-4. Run npm start to start the server.
+# Application Details:
 
-# Test
+## Backend
 
-1. Run the backend in one terminal
-2. Run the frontend in another terminal
-3. Run npm test in a third terminal
-   Note: The frontend tests will fail when app.test.js is tested.
+Interfaces with the iTunes Search API
 
-# Github
+## Frontend
 
-https://github.com/Ruth-Kilian/iTunes-Search-API
+Renders an attractive user interface that allows users to enter a search term,
+select the type of media they want to search for and choose a number of results they want to be displayed.
+
+Results are rendered using props to create an attractive display.
+
+Each result is rendered with a Save and Preview button.
+Users can save an item to their Favourites List by clicking on the save button.
+A Preview button is only rendered for items with a previewUrl key which launches a preview video or preview audio and a Close button.
+
+Favourites Page:
+Each saved item is saved in the Favourites page.
+Items are rendered with a button to remove the item from favourites, a checkbox allowing user to check a number of items before removing multiple items,
+and a Clear button allowing user to clear the favourites list.
+
+# Installation and Setup Instructions
+
+Download or clone the repository.
+You will need node and npm installed globally on your machine.
+
+## Installation:
+
+npm install
+
+## To Run Test Suite:
+
+Back end test:
+cd backend
+npm test
+
+Front end test:
+cd frontend
+npm test
+
+## To Start Application:
+
+cd backend
+npm start
 
 # Deployed Website
-
-Heroku is no longer free and Github Pages will not execute any serverside code. It can only upload static files.
 
 # API Keys
 
