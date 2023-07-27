@@ -50,10 +50,6 @@ npm test
 cd backend
 npm start
 
-# Deployed Website
-
-https://evening-lake-82112-ba62a6e69b2a.herokuapp.com/
-
 # API Keys
 
 The code does not use any API keys. The only external API being accessed is the iTunes API, which does not require an API key.
