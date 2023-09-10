@@ -1,6 +1,6 @@
-# Fullstack React App
+# iTunes Search API
 
-This application is created using React and Express.
+This application is created using React js.
 
 The application interfaces with the iTunes Search API, allowing users to enter a search criteria.
 
